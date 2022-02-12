@@ -1,0 +1,19 @@
+# This is state from figure 6.8b.  This is an unsafe state after P1 request a R1 and R3
+# from state 01
+# number of processes / number of resources
+4 3
+
+# total Resources vector R
+9 3 6
+
+# Claim matrix C
+3 2 2
+6 1 3
+3 1 4
+4 2 2
+
+# Allocation matrix A
+2 0 1
+5 1 1
+2 1 1
+0 0 2

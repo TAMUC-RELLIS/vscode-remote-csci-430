@@ -1,0 +1,10 @@
+{
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "C_Cpp.autocompleteAddParentheses": true,
+    "editor.tabSize": 2,
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}",
+        "${workspaceFolder}/../../include"
+    ]
+}

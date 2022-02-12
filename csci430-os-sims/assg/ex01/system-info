@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+echo "Disk Space Information"
+echo "----------------------"
+df -h
+
+echo ""
+echo "CPU Information"
+echo "----------------------"
+cat /proc/cpuinfo
+
+echo ""
+echo "Memory Information"
+echo "----------------------"
+cat /proc/meminfo

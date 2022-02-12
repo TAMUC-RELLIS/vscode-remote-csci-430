@@ -1,0 +1,94 @@
+new
+cpu
+cpu
+cpu
+new
+new
+new
+cpu
+cpu
+cpu
+cpu
+block 4
+cpu
+block 8
+cpu
+cpu
+block 17
+cpu
+new
+new
+cpu
+cpu
+cpu
+unblock 8
+cpu
+cpu
+cpu
+cpu
+cpu
+cpu
+cpu
+new
+new
+cpu
+cpu
+cpu
+cpu
+cpu
+cpu
+cpu
+cpu
+block 11
+cpu
+cpu
+block 19
+cpu
+cpu
+cpu
+block 23
+cpu
+cpu
+unblock 4
+cpu
+cpu
+cpu
+cpu
+block 7
+cpu
+cpu
+cpu
+unblock 11
+cpu
+cpu
+unblock 17
+cpu
+cpu
+cpu
+cpu
+cpu
+done
+cpu
+cpu
+cpu
+cpu
+done
+unblock 23
+cpu
+cpu
+cpu
+block 4
+cpu
+cpu
+cpu
+cpu
+cpu
+done
+cpu
+done
+unblock 4
+cpu
+cpu
+done
+cpu
+cpu

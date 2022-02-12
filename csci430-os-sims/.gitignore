@@ -1,0 +1,12 @@
+*.o
+*.gch
+*.exe
+*.a
+debug
+test
+sim
+Makefile.pandoc
+*.tar.gz
+\#*
+.\#*
+.vagrant/*

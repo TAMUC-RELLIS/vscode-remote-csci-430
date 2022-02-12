@@ -1,0 +1,25 @@
+# This is state from homework problem set 03, problem 2.  This is the
+# resulting state after P5 makes an additional request of (3 2 3 3) resources.
+# The resulting state is unsafe
+# number of processes / number of resources
+6 4
+
+# total Resources vector R
+15 6 9 10
+
+# Claim matrix C
+9 5 5 5
+2 2 3 3
+7 5 4 4
+3 3 3 2
+5 2 2 1
+4 4 4 4
+
+# Allocation matrix A
+2 0 2 1
+0 1 1 1
+4 1 0 2
+1 0 0 1
+1 1 0 0
+4 2 4 4
+

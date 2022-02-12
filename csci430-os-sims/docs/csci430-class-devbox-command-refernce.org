@@ -1,0 +1,49 @@
+#+TITLE:     CSci 430 Class DevBox Reference
+#+AUTHOR:    Command Reference
+#+EMAIL:     derek@harter.pro
+#+DATE:      \today
+#+DESCRIPTION: Quick reference guide to commands for a gaussian compute box
+#+OPTIONS:   H:4 num:t toc:nil
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:nil pri:nil tags:not-in-toc
+#+LATEX_HEADER: \usepackage{minted}
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* General Linux Command Line Commands
+
+The following tutorial has more information about the Unix/Linux command line, including things like
+specifying file paths, using file wildcards, using pipes and I/O redirection, etc.
+
+- SWCarpentry, The Unix Shell: http://swcarpentry.github.io/shell-novice/
+
+#+ATTR_LATEX: :align p{2.0in}p{5.0in}
+| Command                            | Description                                                                    |
+|------------------------------------+--------------------------------------------------------------------------------|
+| ~$ ls~                             | List directory files, try ~ls -lh~ to get a long listing.                      |
+| ~$ pwd~                            | Print current Working Directory                                                |
+| ~$ cd dirname~                     | Change current working directory to ~dirname~                                  |
+| ~$ mkdir dirname~                  | Make a new directory.                                                          |
+| ~$ mv filename dest/path/for/file~ | Move ~filename~ from current location to location specified by path.           |
+| ~$ cp filename newfilename~        | Copy ~filname~ to ~newfilename~, e.g. make a copy of the file with a new name. |
+| ~$ rm filename~                    | Remove the file named ~filename~                                               |
+| ~$ rmdir dirname~                  | Remove the directory named ~dirname~, only works if directory is empty.        |
+| ~$ less filename~                  | File pager to read/display contents of file in terminal.                       |
+| ~$ wc filename~                    | Get a count of number of lines, words and characters in the ~filename~         |
+
+
+* Class DevBox Build System
+
+#+ATTR_LATEX: :align p{2.0in}p{5.0in}
+| Command               | Description                                                                                                  |
+|-----------------------+--------------------------------------------------------------------------------------------------------------|
+| ~$ make help~         | Get a list of the make targets currently supported / available                                               |
+| ~$ make~              | If no target specified, the defualt target ~make all~ is run, which will build all target executables.       |
+| ~$ make test~         | Only build the ~test~ unit test executable.                                                                  |
+| ~$ make sim~          | Only build the ~sim~ simulation system executable.                                                           |
+| ~$ make tests~        | Run the unit tests and the system tests.  NOTE: This will first build the test executable if needed.         |
+| ~$ make unit-tests~   | Run only the unit tests, showing only the failing tests by default.                                          |
+| ~$ make system-tests~ | Run only the system tests testing the full simulation.                                                       |
+| ~$ make clean~        | Clean (remove) all build executables and build product files.  Use to ensure a clean buile before ~make all~ |
+| ~$ make beautify~     | Run the code formatter tools (uncrustify).  Reformats all source files to conform to class style guidelines. |
+| ~$ make docs~         | Create project reference documentation from source file doxygen markup.                                      |
+| ~$ make submit~       | Make a submission package of your assignment files to be submitted for grading.                              |
+

@@ -1,0 +1,80 @@
+#!/bin/bash
+#
+# Run all system tests.  We run the tests and capture their standard
+# output (plus any error stream messages) to an output file.  A system
+# test passes if the difference of the output matches a
+# reference/correct example output file.  No differences means the
+# system test passes, but differences indicate problems and the system
+# test fails.
+
+
+# list of system test simulations to run
+# each line is of the form "timeSliceQuantum event-sim-file-basename"
+tests="
+fifo 03 pageref-01
+fifo 04 pageref-01
+fifo 03 pageref-02
+fifo 05 pageref-02
+clock 03 pageref-01
+clock 04 pageref-01
+clock 03 pageref-02
+clock 05 pageref-02
+fifo 04 pageref-03
+clock 04 pageref-03
+"
+
+# directories for input and output files
+simdir="simfiles"
+outdir="output"
+
+# constants for colored terminal output (https://misc.flogisoft.com/bash/tip_colors_and_formatting)
+GREEN="\e[1m\e[92m" # this is actually bold light green
+RED="\e[1m\e[91m"   # bold light red
+NORMAL="\e[0m"
+
+# create temporary directory for output, remove any old output first
+rm -rf ${outdir}
+mkdir -p ${outdir}
+
+# run all of the system tests
+declare -i passed=0
+declare -i numtests=0
+IFS=$'\n'
+for testdata in $tests
+do
+    # parse out the simulation file
+    pageScheme=`echo ${testdata} | cut -d ' ' -f 1`
+    memorySize=`echo ${testdata} | cut -d ' ' -f 2`
+    test=`echo ${testdata} | cut -d ' ' -f 3`
+    
+    # set up input and output file names to use
+    simfile=${simdir}/${test}.sim
+    resfile=$(printf "%s/%s-%s-%s.res" ${simdir} ${test} ${pageScheme} ${memorySize} )
+    outfile=$(printf "%s/%s-%s-%s.out" ${outdir} ${test} ${pageScheme} ${memorySize} )
+    
+    # run the simulation
+    ./sim ${pageScheme} ${memorySize} ${simfile} > ${outfile} 2>&1
+
+    # diff returns 0 if files are identical, which means system test passed
+    diff --report-identical-files --brief --ignore-all-space --ignore-blank-lines --ignore-tab-expansion --ignore-case --ignore-trailing-space ${outfile} ${resfile} > /dev/null
+    
+    if [ $? -eq 0 ]
+    then
+      echo -e "System test ${test} ${pageScheme} memorySize ${memorySize}: ${GREEN}PASSED${NORMAL}"
+      passed=$(( passed + 1 ))
+    else
+      echo -e "System test ${test} ${pageScheme} memorySize${memorySize} : ${RED}FAILED${NORMAL}"
+    fi
+    numtests=$(( numtests + 1 ))
+done
+
+# report results over all of the tests
+if [ ${passed} -eq ${numtests} ]
+then
+    echo -e "${GREEN}===============================================================================${NORMAL}"
+    echo -e "${GREEN}All system tests passed    ${NORMAL} (${passed} tests passed of ${numtests} system tests)"
+else
+    echo -e "${RED}===============================================================================${NORMAL}"
+    echo -e "${RED}System test failures detected${NORMAL} (${passed} tests passed of ${numtests} system tests)"
+fi
+
